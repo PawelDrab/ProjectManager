@@ -1,0 +1,96 @@
+﻿@*@model IEnumerable<ProjectManager.Models.TreeConstructorModel>*@
+@model PagedList.IPagedList<ProjectManager.Models.TreeConstructorModel>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "TreeConstructorListView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>TreeConstructorListView</h2>
+
+<p>
+    @Html.ActionLink("Add new item", "TreeConstructorAddView", "TreeConstructor", new { MasterItemID = 0, Level = 0 }, null)
+</p>
+<div>
+    <div class="col-md-6">
+        @using (Html.BeginForm("TreeConstructIndex", "TreeConstructor", FormMethod.Get))
+        {
+            <p>
+                Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                <input type="submit" value="Search" />
+            </p>
+        }
+    </div>
+
+    <div class="col-md-3">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("TreeConstructorListView",
+            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    </div>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("ID")
+        </th>
+        <th>
+            @Html.ActionLink("Level", "TreeConstructorListView", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Item name", "TreeConstructorListView", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.DisplayName("Item description")
+        </th>
+        <th>
+            @Html.ActionLink("Master ID", "TreeConstructorListView", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.DisplayName("Is branch?")
+        </th>
+        <th>
+            @Html.DisplayName("Autocreate")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Level)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MasterItemID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsBranch)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AutoCreate)
+            </td>
+            <td>
+                @Html.ActionLink("Add node", "TreeConstructorAddView", "TreeConstructor", new { MasterItemID = item.ID, Level = item.Level + 1 }, null) |
+                @Html.ActionLink("Edit", "Edit", "TreeConstructor", new { ID = item.ID }, null) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", "TreeConstructor", new { id = item.ID }, null)
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+

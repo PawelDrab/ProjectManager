@@ -1,0 +1,202 @@
+{
+  "id": "362aa999-6729-4b83-b91b-35e20f785f9b",
+  "version": "2.0",
+  "name": "ProjectManagerTests",
+  "url": "http://localhost:9751",
+  "tests": [{
+    "id": "f771a87a-f2cd-438b-8ec9-4faab094536b",
+    "name": "Login failed",
+    "commands": [{
+      "id": "b6eb6e0c-c6a8-43e4-a923-a53365d487c2",
+      "comment": "",
+      "command": "open",
+      "target": "/Account/Login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "815a4aa9-4478-4e84-a2f2-eb8bb70bfa49",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "946x883",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c9a9ae9a-25b5-4db7-b123-5b4c44351e78",
+      "comment": "",
+      "command": "click",
+      "target": "id=Email",
+      "targets": [
+        ["id=Email", "id"],
+        ["name=Email", "name"],
+        ["css=#Email", "css:finder"],
+        ["xpath=//input[@id='Email']", "xpath:attributes"],
+        ["xpath=//section[@id='loginForm']/form/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a704090a-d0ab-41f6-b156-6251509870b6",
+      "comment": "",
+      "command": "type",
+      "target": "id=Email",
+      "targets": [
+        ["id=Email", "id"],
+        ["name=Email", "name"],
+        ["css=#Email", "css:finder"],
+        ["xpath=//input[@id='Email']", "xpath:attributes"],
+        ["xpath=//section[@id='loginForm']/form/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "agsgaf@efw.pl"
+    }, {
+      "id": "d8b730a1-92aa-41fd-b85a-adf7b576f970",
+      "comment": "",
+      "command": "type",
+      "target": "id=Password",
+      "targets": [
+        ["id=Password", "id"],
+        ["name=Password", "name"],
+        ["css=#Password", "css:finder"],
+        ["xpath=//input[@id='Password']", "xpath:attributes"],
+        ["xpath=//section[@id='loginForm']/form/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": "saggarhgwshs"
+    }, {
+      "id": "7382c2d1-1869-40d4-828a-1b86a03ab2f0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Log in']", "xpath:attributes"],
+        ["xpath=//section[@id='loginForm']/form/div[4]/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b38f29b1-3a73-4bcf-a2c0-a459a6ad6f67",
+      "comment": "",
+      "command": "assertValue",
+      "target": "id=Email",
+      "targets": [
+        ["id=Email", "id"],
+        ["name=Email", "name"],
+        ["css=#Email", "css:finder"],
+        ["xpath=//input[@id='Email']", "xpath:attributes"],
+        ["xpath=//section[@id='loginForm']/form/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "agsgaf@efw.pl"
+    }, {
+      "id": "3354cddf-1901-4731-bf82-74cdd0d4e333",
+      "comment": "",
+      "command": "assertValue",
+      "target": "id=Password",
+      "targets": [
+        ["id=Password", "id"],
+        ["name=Password", "name"],
+        ["css=#Password", "css:finder"],
+        ["xpath=//input[@id='Password']", "xpath:attributes"],
+        ["xpath=//section[@id='loginForm']/form/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cc577217-f9bd-4885-824e-f4fa473babd0",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.validation-summary-errors li",
+      "targets": [
+        ["css=.validation-summary-errors li", "css:finder"],
+        ["xpath=//section[@id='loginForm']/form/div/ul/li", "xpath:idRelative"],
+        ["xpath=//form/div/ul/li", "xpath:position"],
+        ["xpath=//li[contains(.,'Invalid login attempt.')]", "xpath:innerText"]
+      ],
+      "value": "Invalid login attempt."
+    }]
+  }, {
+    "id": "93e9ec12-6171-48d3-9d6b-5f356e897ee8",
+    "name": "Email not valid",
+    "commands": [{
+      "id": "eb3542c2-81ae-4678-8400-fbe4130fa098",
+      "comment": "",
+      "command": "open",
+      "target": "/Account/Login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2f563f0e-5e9a-444c-a67d-13c1d4d8b7b2",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "946x884",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ae3e2b3d-a74c-4157-9a95-6a44ad76aab6",
+      "comment": "",
+      "command": "click",
+      "target": "id=Email",
+      "targets": [
+        ["id=Email", "id"],
+        ["name=Email", "name"],
+        ["css=#Email", "css:finder"],
+        ["xpath=//input[@id='Email']", "xpath:attributes"],
+        ["xpath=//section[@id='loginForm']/form/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "98b03914-cd27-437d-a1a1-5ba075885b2b",
+      "comment": "",
+      "command": "type",
+      "target": "id=Email",
+      "targets": [
+        ["id=Email", "id"],
+        ["name=Email", "name"],
+        ["css=#Email", "css:finder"],
+        ["xpath=//input[@id='Email']", "xpath:attributes"],
+        ["xpath=//section[@id='loginForm']/form/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "vugigigivi"
+    }, {
+      "id": "a40a0b84-327e-4fc7-9e94-5581209a45f3",
+      "comment": "",
+      "command": "click",
+      "target": "id=Password",
+      "targets": [
+        ["id=Password", "id"],
+        ["name=Password", "name"],
+        ["css=#Password", "css:finder"],
+        ["xpath=//input[@id='Password']", "xpath:attributes"],
+        ["xpath=//section[@id='loginForm']/form/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1e152d06-f5e9-49ec-b9c1-1a6c5e3d5b2d",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=Email-error",
+      "targets": [
+        ["id=Email-error", "id"],
+        ["css=#Email-error", "css:finder"],
+        ["xpath=//span[@id='Email-error']", "xpath:attributes"],
+        ["xpath=//section[@id='loginForm']/form/div/div/span/span", "xpath:idRelative"],
+        ["xpath=//span/span", "xpath:position"]
+      ],
+      "value": "The Email field is not a valid e-mail address."
+    }]
+  }],
+  "suites": [{
+    "id": "516e463c-ec65-4863-94fb-24bbc7bc2600",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["f771a87a-f2cd-438b-8ec9-4faab094536b"]
+  }],
+  "urls": ["http://localhost:9751/"],
+  "plugins": []
+}

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ProjectManager.Models.BranchModel>
+
+@{
+    ViewBag.Title = "BranchListView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>BranchListView</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TreeConstruct.ItemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MasterID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StateID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TreeConstruct.ItemName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MasterID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StateID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comment)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

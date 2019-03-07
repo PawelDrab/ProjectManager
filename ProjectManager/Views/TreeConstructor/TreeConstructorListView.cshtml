@@ -3,24 +3,29 @@
 @using PagedList.Mvc;
 
 @{
-    ViewBag.Title = "TreeConstructorListView";
+    ViewBag.Title = "Tree constructor";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>TreeConstructorListView</h2>
+<h2>Tree constructor</h2>
 
-<p>
-    @Html.ActionLink("Add new item", "TreeConstructorAddView", "TreeConstructor", new { MasterItemID = 0, Level = 0 }, null)
-</p>
-<div>
-    <div class="col-md-6">
+
+<div class="row">
+    <div class="col-md-9">
+        <div class="row">
         @using (Html.BeginForm("TreeConstructIndex", "TreeConstructor", FormMethod.Get))
         {
+            <p class="col-md-3">
+                @Html.ActionLink("Add new item", "TreeConstructorAddView", "TreeConstructor", new {MasterItemID = 0, Level = 0}, new {@class = "btn btn-success btn-sm"})
+            </p>
+        }
+        </div>
+        <div class="row">
             <p>
                 Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
                 <input type="submit" value="Search" />
             </p>
-        }
+        </div>    
     </div>
 
     <div class="col-md-3">
@@ -31,6 +36,8 @@
     </div>
 </div>
 
+
+<div class="table-responsive" style="min-height: 527px">
 <table class="table">
     <tr>
         <th>
@@ -82,15 +89,27 @@
                 @Html.DisplayFor(modelItem => item.AutoCreate)
             </td>
             <td>
-                @Html.ActionLink("Add node", "TreeConstructorAddView", "TreeConstructor", new { MasterItemID = item.ID, Level = item.Level + 1 }, null) |
-                @Html.ActionLink("Edit", "Edit", "TreeConstructor", new { ID = item.ID }, null) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", "TreeConstructor", new { id = item.ID }, null)
+                <div class="btn-group">
+                    @Html.ActionLink("Add node", "TreeConstructorAddView", "TreeConstructor", new {MasterItemID = item.ID, Level = item.Level + 1}, new {@class = "btn btn-success btn-sm" })
+                    @Html.ActionLink("Edit", "Edit", "TreeConstructor", new {id = item.ID}, new {@class = "btn btn-primary btn-sm" })
+                    @Html.ActionLink("Details", "TreeConstructorDetailsView", "TreeConstructor", new { id = item.ID}, new {@class = "btn btn-info btn-sm" })
+                    @Html.ActionLink("Delete", "Delete", "TreeConstructor", new {id = item.ID}, new {@class = "btn btn-danger btn-sm" })
+                </div>
             </td>
         </tr>
     }
 
 </table>
+</div>
+
+<div class="col-md-9">
+</div>
+<div class="col-md-3">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("TreeConstructorListView",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>
 
 
 

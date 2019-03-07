@@ -4,8 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ProjectManager.Models;
-
-using ProjectManager.Models;
 using System.Data;
 using PagedList;
 
@@ -108,8 +106,19 @@ namespace ProjectManager.Controllers
             try
             {
                 TreeConstructorModel TreeConstruct = db.TreeConstruct.Find(id);
-                db.TreeConstruct.Remove(TreeConstruct);
-                db.SaveChanges();
+
+                TreeConstructorModel ChildElement = db.TreeConstruct.FirstOrDefault(x => x.MasterItemID == id);
+                if (ChildElement == null)
+                {
+                    db.TreeConstruct.Remove(TreeConstruct);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    ViewBag.ErrorMessage = "Delete failed. Child items exist.";
+                    return RedirectToAction("TreeConstructorListView");
+                }
+
             }
             catch (RetryLimitExceededException/* dex */)
             {
@@ -154,6 +163,20 @@ namespace ProjectManager.Controllers
                 return View();
             }
         }
+
+        public ActionResult TreeConstructorDetailsView(int id)
+        {
+            TreeConstructorModel TreeConstruct = db.TreeConstruct.Find(id);
+            if (TreeConstruct == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return View("TreeConstructorDetailsView", TreeConstruct);
+            }
+        }
+
         public ActionResult TreeConstructorListView(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;

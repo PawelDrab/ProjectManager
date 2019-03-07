@@ -26,18 +26,18 @@ namespace ProjectManager.Models
         public string Comment { get; set; }
 
 
-        [NotMapped]
-        public List<BranchModel> ChildActivities { get; set; }
+        //[NotMapped]
+        //public List<BranchModel> ChildActivities { get; set; }
 
-        public BranchModel()
-        {
-            ChildActivities = new List<BranchModel>();
-        }
+        //public BranchModel()
+        //{
+        //    ChildActivities = new List<BranchModel>();
+        //}
 
-        public static BranchModel Find(BranchModel branchModel, int nodeID)
-        {
-            if (branchModel == null) return null;
-            return branchModel.ID == nodeID ? branchModel : branchModel.ChildActivities.Select(child => Find(child, nodeID)).FirstOrDefault(found => found != null);
-        }
+        //public static BranchModel Find(BranchModel branchModel, int nodeID)
+        //{
+        //    if (branchModel == null) return null;
+        //    return branchModel.ID == nodeID ? branchModel : branchModel.ChildActivities.Select(child => Find(child, nodeID)).FirstOrDefault(found => found != null);
+        //}
     }
 }
